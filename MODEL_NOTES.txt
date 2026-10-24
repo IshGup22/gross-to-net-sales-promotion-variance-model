@@ -1,0 +1,1 @@
+All numeric finance outcomes depend on synthetic demo sales and illustrative pricing/cost/volume assumptions. No real SAP or TPM dataset was used.
