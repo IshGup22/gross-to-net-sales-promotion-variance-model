@@ -1,0 +1,14 @@
+-- Load powerbi_monthly_financials.csv as Monthly and powerbi_scenario_financials.csv as Scenarios.
+Gross Sales = SUM(Monthly[GrossSales_GBP])
+Net Sales = SUM(Monthly[NetSales_GBP])
+Contribution Profit = SUM(Monthly[Contribution_GBP])
+Contribution Margin = DIVIDE([Contribution Profit], [Net Sales])
+Planned Contribution = SUM(Monthly[PlanContribution_GBP])
+Contribution Variance = [Contribution Profit] - [Planned Contribution]
+Contribution Variance % = DIVIDE([Contribution Variance], [Planned Contribution])
+Promotional Discounts = SUM(Monthly[PromoDiscounts_GBP])
+Trade Spend = SUM(Monthly[TradeSpend_GBP])
+Promo Spend Ratio = DIVIDE([Promotional Discounts] + [Trade Spend], [Gross Sales])
+Scenario Contribution = SUM(Scenarios[Contribution_GBP])
+Scenario Margin = DIVIDE(SUM(Scenarios[Contribution_GBP]), SUM(Scenarios[NetSales_GBP]))
+-- Do not cross-filter scenario and monthly data; scenarios are a disconnected summary.
